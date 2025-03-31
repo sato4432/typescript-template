@@ -1,22 +1,23 @@
-import eslint from "@eslint/js";
-import tseslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import reactPlugin from "eslint-plugin-react";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
-import prettierPlugin from "eslint-plugin-prettier";
+import eslint from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
+  eslint.configs.recommended,
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
         },
-        ecmaVersion: "latest",
-        sourceType: "module",
-        project: "./tsconfig.json",
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: './tsconfig.json',
       },
       globals: {
         ...eslint.globals.browser,
@@ -25,29 +26,27 @@ export default [
       },
     },
     plugins: {
-      "@typescript-eslint": tseslint,
+      '@typescript-eslint': tseslint,
       react: reactPlugin,
-      "react-hooks": reactHooksPlugin,
+      'react-hooks': reactHooksPlugin,
       prettier: prettierPlugin,
     },
     rules: {
-      "prettier/prettier": "error",
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "error",
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_" },
-      ],
-      "@typescript-eslint/no-non-null-assertion": "error",
-      "no-console": ["warn", { allow: ["warn", "error"] }],
-      eqeqeq: "error",
-      curly: ["error", "all"],
+      'prettier/prettier': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      eqeqeq: 'error',
+      curly: ['error', 'all'],
+      '@typescript-eslint/no-unused-expressions': 'off',
     },
     settings: {
       react: {
-        version: "detect",
+        version: 'detect',
       },
     },
   },
